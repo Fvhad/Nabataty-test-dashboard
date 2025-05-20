@@ -13,19 +13,22 @@ const dailyOrdersData2025 = {};
 // Dummy daily data for each month in 2024 (for comparison)
 const dailyRevenueData2024 = {};
 const dailyOrdersData2024 = {};
-// Generate 2025 data
+// Generate 2025 and 2024 data
 for (let m = 0; m < 12; m++) {
-    const days = getDaysInMonth(2025, m);
+    const days2025 = getDaysInMonth(2025, m);
+    const days2024 = getDaysInMonth(2024, m);
     dailyRevenueData2025[m] = [];
     dailyOrdersData2025[m] = [];
     dailyRevenueData2024[m] = [];
     dailyOrdersData2024[m] = [];
-    
-    for (let d = 1; d <= days; d++) {
+
+    for (let d = 1; d <= days2025; d++) {
         // Generate random but realistic dummy data for 2025
         dailyRevenueData2025[m].push(Math.floor(350 + Math.random() * 400));
         dailyOrdersData2025[m].push(Math.floor(4 + Math.random() * 10));
-        
+    }
+
+    for (let d = 1; d <= days2024; d++) {
         // Generate slightly lower numbers for 2024 (for comparison)
         dailyRevenueData2024[m].push(Math.floor(300 + Math.random() * 350));
         dailyOrdersData2024[m].push(Math.floor(3 + Math.random() * 8));
