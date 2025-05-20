@@ -27,7 +27,7 @@ h1 {
 
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
 
@@ -249,4 +249,44 @@ h1 {
     height: 350px !important;
     display: block;
     margin: 0 auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+    .metric-value {
+        font-size: 2rem;
+    }
+    .chart-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .metric-card {
+        padding: 1.5rem;
+    }
+    .metric-value {
+        font-size: 1.6rem;
+    }
+    .chart-container {
+        padding: 1rem;
+    }
+    .chart-container h2 {
+        font-size: 1rem;
+    }
+    .chart-controls {
+        gap: 0.8rem;
+    }
 }
