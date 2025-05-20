@@ -76,6 +76,7 @@ const barChart = new Chart(ctx, {
     },
     options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
@@ -89,6 +90,13 @@ const barChart = new Chart(ctx, {
             }
         },
         scales: {
+            x: {
+                ticks: {
+                    autoSkip: true,
+                    maxRotation: 45,
+                    minRotation: 0
+                }
+            },
             y: {
                 beginAtZero: true,
                 position: 'left',
