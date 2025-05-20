@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Nabataty Dashboard</h1>
+        </header>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Total Orders</h3>
+                    <div class="metric-value" id="totalOrders">0</div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Total Revenue</h3>
+                    <div class="metric-value" id="totalRevenue">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bar Chart Section -->
+        <div class="chart-container">
+            <div class="chart-controls">
+                <button id="compareToggle" class="compare-btn">Compare with 2024</button>
+                <div class="chart-filters">
+                    <label for="periodSelect">View by:</label>
+                <select id="periodSelect">
+                    <option value="year">Year</option>
+                    <option value="quarter">Quarter</option>
+                    <option value="month">Month</option>
+                    <option value="day">Day</option>
+                    <option value="custom">Custom Range</option>
+                </select>
+                <span id="customDateInputs" style="display:none;">
+                    <input type="date" id="startDate"> to <input type="date" id="endDate">
+                    <button id="applyCustomRange">Apply</button>
+                </span>
+            </div>
+            <h2 id="chartTitle">2025 Monthly Revenue & Orders</h2>
+            <canvas id="revenueOrdersBarChart"></canvas>
+            
+            <!-- Comparison Summary Panel -->
+            <div id="comparisonSummary" class="comparison-summary" style="display: none;">
+                <h3>Comparison: <span id="periodLabel">Period</span> over Previous Year</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-metric">
+                        <div class="metric-title">Total Revenue</div>
+                        <div class="metric-values">
+                            <span class="current-year">2025: <span id="revenue2025">$0</span></span>
+                            <span class="previous-year">2024: <span id="revenue2024">$0</span></span>
+                            <span class="growth positive" id="revenueGrowth">+0.0%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="metric-title">Total Orders</div>
+                        <div class="metric-values">
+                            <span class="current-year">2025: <span id="orders2025">0</span></span>
+                            <span class="previous-year">2024: <span id="orders2024">0</span></span>
+                            <span class="growth positive" id="ordersGrowth">+0.0%</span>
+                        </div>
+                    </div>
+                    <div class="comparison-metric">
+                        <div class="metric-title">Avg. Order Value</div>
+                        <div class="metric-values">
+                            <span class="current-year">2025: <span id="aov2025">$0</span></span>
+                            <span class="previous-year">2024: <span id="aov2024">$0</span></span>
+                            <span class="growth positive" id="aovGrowth">+0.0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
