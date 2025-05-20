@@ -1,7 +1,7 @@
 // This is where you would add your data fetching logic
 // For now, we'll keep the values at 0 as requested
 
-// Utility: Generate days in month
+// Utility: Generate days in a month
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
