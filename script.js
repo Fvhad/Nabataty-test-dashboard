@@ -138,6 +138,11 @@ function calculateGrowth(current, previous) {
     };
 }
 
+// Export for testing environments like Node/Jest
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { calculateGrowth };
+}
+
 // Update comparison summary with data
 function updateComparisonSummary(revenue2025, orders2025, revenue2024, orders2024, period) {
     if (!isComparing) {

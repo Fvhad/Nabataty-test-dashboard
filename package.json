@@ -1,0 +1,12 @@
+{
+  "name": "nabataty-test-dashboard",
+  "version": "1.0.0",
+  "description": "Test dashboard for Nabataty",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
