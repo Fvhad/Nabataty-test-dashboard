@@ -1,6 +1,6 @@
-// This is where you would add your data fetching logic
-// For now, we'll keep the values at 0 as requested
-
+// This is where you would add your real data fetching logic.
+// For demonstration purposes, this script generates randomized dummy data
+// so the dashboard metrics are populated with sample values.
 // Utility: Generate days in month
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
@@ -13,7 +13,7 @@ const dailyOrdersData2025 = {};
 // Dummy daily data for each month in 2024 (for comparison)
 const dailyRevenueData2024 = {};
 const dailyOrdersData2024 = {};
-// Generate 2025 data
+// Generate dummy data for 2025 and 2024
 for (let m = 0; m < 12; m++) {
     const days = getDaysInMonth(2025, m);
     dailyRevenueData2025[m] = [];
