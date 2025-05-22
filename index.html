@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Nabataty Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
-        <header>
-            <h1>Nabataty Dashboard</h1>
+        <!-- Centered Brand Header -->
+        <header class="brand-header">
+            <div class="logo-container">
+                <i class="fas fa-leaf logo-icon"></i>
+                <h1 class="brand-title">Nabataty Dashboard</h1>
+            </div>
         </header>
         
+        <!-- Metric Cards Section -->
         <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <div class="metric-content">
-                    <h3>Total Orders</h3>
                     <div class="metric-value" id="totalOrders">0</div>
+                    <div class="metric-label">Total Orders</div>
                 </div>
             </div>
 
@@ -29,65 +37,77 @@
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="metric-content">
-                    <h3>Total Revenue</h3>
                     <div class="metric-value" id="totalRevenue">$0</div>
+                    <div class="metric-label">Total Revenue</div>
                 </div>
             </div>
         </div>
 
         <!-- Bar Chart Section -->
         <div class="chart-container">
-            <div class="chart-controls">
-                <button id="compareToggle" class="compare-btn">Compare with 2024</button>
-                <div class="chart-filters">
-                    <label for="periodSelect">View by:</label>
-                <select id="periodSelect">
-                    <option value="year">Year</option>
-                    <option value="quarter">Quarter</option>
-                    <option value="month">Month</option>
-                    <option value="day">Day</option>
-                    <option value="custom">Custom Range</option>
-                </select>
-                <span id="customDateInputs" style="display:none;">
-                    <input type="date" id="startDate"> to <input type="date" id="endDate">
-                    <button id="applyCustomRange">Apply</button>
-                </span>
+            <!-- Segmented Control for View Switching -->
+            <div class="segmented-control-container">
+                <div class="segment-controls">
+                    <select id="periodSelect" class="period-select">
+                        <option value="year">Year</option>
+                        <option value="quarter">Quarter</option>
+                        <option value="month">Month</option>
+                        <option value="day">Day</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                    <div id="customDateInputs" class="custom-date-inputs" style="display:none;">
+                        <input type="date" id="startDate"> to <input type="date" id="endDate">
+                        <button id="applyCustomRange" class="apply-btn">Apply</button>
+                    </div>
+                    <button id="compareToggle" class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare with 2024</button>
+                </div>
             </div>
-            <h2 id="chartTitle">2025 Monthly Revenue & Orders</h2>
-            <canvas id="revenueOrdersBarChart"></canvas>
+
+            <h2 id="chartTitle" class="chart-title">2025 Revenue & Orders</h2>
             
-            <!-- Comparison Summary Panel -->
+            <!-- Interactive Bar Chart -->
+            <div class="chart-wrapper">
+                <canvas id="revenueOrdersBarChart"></canvas>
+            </div>
+            
+            <!-- Comparison Summary Section -->
             <div id="comparisonSummary" class="comparison-summary" style="display: none;">
-                <h3>Comparison: <span id="periodLabel">Period</span> over Previous Year</h3>
+                <h3 class="comparison-title" id="comparisonTitle">Year-over-Year Comparison</h3>
                 <div class="comparison-grid">
-                    <div class="comparison-metric">
-                        <div class="metric-title">Total Revenue</div>
-                        <div class="metric-values">
-                            <span class="current-year">2025: <span id="revenue2025">$0</span></span>
-                            <span class="previous-year">2024: <span id="revenue2024">$0</span></span>
-                            <span class="growth positive" id="revenueGrowth">+0.0%</span>
+                    <div class="comparison-card">
+                        <div class="comparison-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Revenue</span>
+                        </div>
+                        <div class="comparison-content">
+                            <div class="comparison-values">
+                                <div class="current-value"><span id="revenue2025">$0</span></div>
+                                <div class="previous-value">vs <span id="revenue2024">$0</span></div>
+                            </div>
+                            <div class="comparison-growth">
+                                <span class="growth positive" id="revenueGrowth">+0.0%</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="comparison-metric">
-                        <div class="metric-title">Total Orders</div>
-                        <div class="metric-values">
-                            <span class="current-year">2025: <span id="orders2025">0</span></span>
-                            <span class="previous-year">2024: <span id="orders2024">0</span></span>
-                            <span class="growth positive" id="ordersGrowth">+0.0%</span>
+                    
+                    <div class="comparison-card">
+                        <div class="comparison-header">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Orders</span>
                         </div>
-                    </div>
-                    <div class="comparison-metric">
-                        <div class="metric-title">Avg. Order Value</div>
-                        <div class="metric-values">
-                            <span class="current-year">2025: <span id="aov2025">$0</span></span>
-                            <span class="previous-year">2024: <span id="aov2024">$0</span></span>
-                            <span class="growth positive" id="aovGrowth">+0.0%</span>
+                        <div class="comparison-content">
+                            <div class="comparison-values">
+                                <div class="current-value"><span id="orders2025">0</span></div>
+                                <div class="previous-value">vs <span id="orders2024">0</span></div>
+                            </div>
+                            <div class="comparison-growth">
+                                <span class="growth positive" id="ordersGrowth">+0.0%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
