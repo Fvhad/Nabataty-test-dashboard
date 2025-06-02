@@ -20,6 +20,10 @@ build/
 .env.test.local
 .env.production.local
 
+# Database files
+dashboard.db
+*.db
+
 # Editor directories and files
 .idea/
 .vscode/
